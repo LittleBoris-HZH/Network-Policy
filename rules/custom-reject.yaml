@@ -1,0 +1,4 @@
+# Domains explicitly blocked by local policy.
+# Prefer advertising/tracking domains only.
+
+payload: []
