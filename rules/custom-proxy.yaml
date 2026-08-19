@@ -1,0 +1,4 @@
+# Domains that must use Melbourne.
+# Use +.example.com to match both example.com and all subdomains.
+
+payload: []
