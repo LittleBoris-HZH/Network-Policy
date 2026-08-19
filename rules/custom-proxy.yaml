@@ -1,4 +1,2 @@
-# Domains that must use Melbourne.
-# Use +.example.com to match both example.com and all subdomains.
-
+# 人工强制走 Melbourne WEPC
 payload: []
