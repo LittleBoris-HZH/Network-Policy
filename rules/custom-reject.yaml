@@ -1,4 +1,2 @@
-# Domains explicitly blocked by local policy.
-# Prefer advertising/tracking domains only.
-
+# 人工强制阻断
 payload: []
