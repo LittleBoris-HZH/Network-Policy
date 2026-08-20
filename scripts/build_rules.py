@@ -13,7 +13,6 @@ POLICY = ROOT / "policy" / "services.json"
 
 DIRECT_OUT = ROOT / "rules" / "direct-allow.yaml"
 VETO_OUT = ROOT / "rules" / "service-veto.yaml"
-ADS_OUT = ROOT / "rules" / "service-ads.yaml"
 
 META_REPO = "https://github.com/MetaCubeX/meta-rules-dat.git"
 
@@ -23,30 +22,40 @@ RAW_BASE = (
 )
 
 
-# 获取本次构建时 MetaCubeX meta 分支的最新 commit。
-# 只固定“本次构建快照”，下一次运行仍会重新获取最新版。
+# 获取本次构建时 meta 分支最新 commit。
 def latest_meta_commit():
-    output = subprocess.check_output(
+    result = subprocess.run(
         [
             "git",
             "ls-remote",
+            "--exit-code",
             META_REPO,
             "refs/heads/meta",
         ],
+        capture_output=True,
         text=True,
-    ).strip()
+        check=True,
+        timeout=30,
+    )
 
-    sha = output.split()[0]
+    parts = result.stdout.split()
+
+    if not parts:
+        raise RuntimeError(
+            "Unable to resolve MetaCubeX meta HEAD"
+        )
+
+    sha = parts[0]
 
     if not re.fullmatch(r"[0-9a-f]{40}", sha):
         raise RuntimeError(
-            "Unable to resolve MetaCubeX meta HEAD"
+            f"Invalid MetaCubeX commit: {sha}"
         )
 
     return sha
 
 
-# 读取你批准 DIRECT 的服务列表。
+# 读取允许 DIRECT 的服务。
 def read_services():
     data = json.loads(
         POLICY.read_text(encoding="utf-8")
@@ -67,6 +76,7 @@ def read_services():
     result = []
 
     for service in services:
+
         if not isinstance(service, str):
             raise RuntimeError(
                 f"Invalid service: {service}"
@@ -85,9 +95,9 @@ def read_services():
     return sorted(set(result))
 
 
-# 从 MetaCubeX 当前 commit 下载指定 service Rule Set。
-# @!cn / @ads 不存在时视为空集合。
+# 下载 MetaCubeX service list。
 def fetch_list(commit, name, optional=False):
+
     encoded = quote(
         name,
         safe="@!._-",
@@ -118,6 +128,8 @@ def fetch_list(commit, name, optional=False):
             )
 
     except HTTPError as error:
+
+        # @!cn 不一定存在。
         if optional and error.code == 404:
             return set()
 
@@ -125,22 +137,38 @@ def fetch_list(commit, name, optional=False):
 
     rules = set()
 
-    for raw in text.splitlines():
+    for line_no, raw in enumerate(
+        text.splitlines(),
+        1,
+    ):
+
         line = raw.strip()
 
-        if not line:
+        if not line or line.startswith("#"):
             continue
 
-        if line.startswith("#"):
-            continue
+        # 确保输出仍然是 domain Rule Set，
+        # 不把其他规则类型误塞进去。
+        if (
+            any(ch.isspace() for ch in line)
+            or "," in line
+            or ":" in line
+            or "/" in line
+            or "#" in line
+        ):
+            raise RuntimeError(
+                f"{name}.list:{line_no}: "
+                f"unexpected domain syntax: {line}"
+            )
 
         rules.add(line)
 
     return rules
 
 
-# 输出 Mihomo / Stash 都能读取的 YAML Rule Set。
+# 输出 Mihomo / Stash YAML Rule Set。
 def write_yaml(path, rules, commit):
+
     path.parent.mkdir(
         parents=True,
         exist_ok=True,
@@ -176,50 +204,35 @@ def write_yaml(path, rules, commit):
 
 
 def main():
+
     commit = latest_meta_commit()
     services = read_services()
 
     direct = set()
     veto = set()
-    ads = set()
 
     for service in services:
 
-        # 整个批准服务
+        # 整个服务 → DIRECT
         full = fetch_list(
             commit,
             service,
         )
 
-        # 服务中的非大陆子集
+        # 服务中的 @!cn → WEPC
         non_cn = fetch_list(
             commit,
             f"{service}@!cn",
             optional=True,
         )
 
-        # 服务自己的广告子集
-        service_ads = fetch_list(
-            commit,
-            f"{service}@ads",
-            optional=True,
-        )
-
-        # 不做 subtraction。
-        # 最终由 Clash / Stash 的规则优先级决定：
-        #
-        # veto → WEPC
-        # ads  → REJECT
-        # full → DIRECT
         direct.update(full)
         veto.update(non_cn)
-        ads.update(service_ads)
 
         print(
             f"{service}: "
             f"direct={len(full)}, "
-            f"veto={len(non_cn)}, "
-            f"ads={len(service_ads)}"
+            f"veto={len(non_cn)}"
         )
 
     write_yaml(
@@ -234,17 +247,10 @@ def main():
         commit,
     )
 
-    write_yaml(
-        ADS_OUT,
-        ads,
-        commit,
-    )
-
     print()
     print(f"MetaCubeX commit: {commit}")
     print(f"direct-allow: {len(direct)}")
     print(f"service-veto: {len(veto)}")
-    print(f"service-ads: {len(ads)}")
 
 
 if __name__ == "__main__":
