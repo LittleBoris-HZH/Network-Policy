@@ -20,3 +20,13 @@ payload:
   # 中国铁路 12306 / 货运 95306
   - "+.12306.cn"
   - "+.95306.cn"
+
+  # 华泰证券 / 涨乐财富通
+  - "+.zhangle.com"
+  - "+.htsc.com"
+  - "+.htsc.com.cn"
+  - "+.htzq.com.cn"
+
+  # 涨乐可能使用的国内金融内容服务
+  - "+.finet.com.cn"
+  - "+.roadshowing.com"
