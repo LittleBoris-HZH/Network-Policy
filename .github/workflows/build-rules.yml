@@ -2,7 +2,7 @@ name: Build WEPC Rules
 
 on:
 
-  # 修改服务列表后立即重新生成
+  # 修改服务列表后立即更新
   push:
     branches:
       - main
@@ -12,21 +12,20 @@ on:
       - "scripts/build_rules.py"
       - ".github/workflows/build-rules.yml"
 
-  # 每天自动同步一次 MetaCubeX
+  # 每天自动同步 MetaCubeX
   # GitHub cron 使用 UTC
   schedule:
     - cron: "17 3 * * *"
 
-  # GitHub Actions 页面可手动运行
+  # 允许手动运行
   workflow_dispatch:
 
 
-# 允许 Action 把生成后的规则提交回仓库
 permissions:
   contents: write
 
 
-# 防止两次构建同时运行
+# 避免两个构建同时运行
 concurrency:
   group: wepc-rule-build
   cancel-in-progress: true
@@ -35,7 +34,9 @@ concurrency:
 jobs:
 
   build:
+
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
 
@@ -57,10 +58,9 @@ jobs:
 
           git add \
             rules/direct-allow.yaml \
-            rules/service-veto.yaml \
-            rules/service-ads.yaml
+            rules/service-veto.yaml
 
-          # 没变化就直接结束，不制造无意义 commit
+          # 规则没变化就不产生 commit
           if git diff --cached --quiet; then
             echo "No rule changes."
             exit 0
