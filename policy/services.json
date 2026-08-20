@@ -1,50 +1,135 @@
 {
   "schema_version": 1,
   "services": [
+    "51job",
+    "58tongcheng",
+
+    "acfun",
     "airchina",
     "aliyun-drive",
     "amap",
+
     "baidu",
+    "beisen",
     "bilibili",
     "boc",
+
     "cainiao",
     "category-bank-cn",
+    "category-securities-cn",
     "ccb",
     "cctv",
+    "chinabroadnet",
     "chinamobile",
     "chinapost",
     "chinaso",
     "chinatelecom",
+    "chinatower",
     "chinaunicom",
+    "chinaz",
     "citic",
     "cmb",
+    "colorfulclouds",
     "ctrip",
     "ctyun",
+
+    "dangdang",
+    "dedao",
     "deepseek",
     "deppon",
+    "dewu",
     "didi",
     "dingtalk",
     "douban",
     "doubao",
     "douyin",
+    "douyu",
+
+    "eastmoney",
     "eleme",
+    "everbright",
+
     "fcbox",
     "feishu",
+    "flowus",
+    "fqnovel",
+
     "hainanairlines",
+    "huawei",
+    "hunantv",
+    "huya",
+
     "icbc",
+    "intsig",
     "iqiyi",
+
     "jd",
+    "jianshu",
+    "jinshuju",
+
+    "keep",
     "kuaidi100",
     "kuaishou",
+
+    "lagou",
+    "lianjia",
+    "liepin",
+
+    "mafengwo",
+    "meitu",
     "meituan",
+    "moji",
+
     "netease",
+    "nowcoder",
+
+    "oppo",
+
     "petrochina",
     "pinduoduo",
+    "pingan",
+
+    "qianxin",
+    "qweather",
+    "qingcloud",
+    "qingtingfm",
+    "qihoo360",
+
     "sina",
+    "smzdm",
+    "sto-express",
+    "suishouji",
+    "suning",
+
+    "taikang",
     "tencent",
+    "tencent-tme",
+    "tongcheng",
+    "trae",
+
+    "ucloud",
+
+    "vivo",
+
+    "weathercn",
+    "wjx",
+    "wolai",
     "wps",
+
     "xiaohongshu",
+    "xiaomi",
+    "xiaoyuzhou",
+    "xunlei",
+
+    "yto-express",
     "youku",
-    "zhihu"
+    "youzan",
+    "yuewen",
+    "yundaex",
+
+    "zhihu",
+    "zhubajie",
+    "ziroom",
+    "zto-express"
   ]
 }
