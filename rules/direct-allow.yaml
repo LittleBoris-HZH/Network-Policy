@@ -1,5 +1,5 @@
 # Generated automatically by WEPC
-# MetaCubeX commit: 4805c8bba846dba1b5a81aef0d8488e56f95a95a
+# MetaCubeX commit: ea397961a5500b6f759f566eed53e2240e260e0f
 
 payload:
   - "+.00cdn.com"
@@ -3387,6 +3387,7 @@ payload:
   - "gsp4-cn.ls.apple.com.edgekey.net.globalredir.akadns.net"
   - "gsp5-cn.ls.apple.com"
   - "gsp85-cn-ssl.ls.apple.com"
+  - "gspe11-2-cn-ssl.ls.apple.com"
   - "gspe19-2-cn-ssl.ls-apple.com.akadns.net"
   - "gspe19-2-cn-ssl.ls.apple.com"
   - "gspe19-cn-ssl.ls.apple.com"
