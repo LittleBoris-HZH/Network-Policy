@@ -1,5 +1,5 @@
 # Generated automatically by WEPC
-# MetaCubeX commit: 4d065eb9c68fb13603fa4678cc34735db76cabb8
+# MetaCubeX commit: 94c0f6e24c9f9af2c6c184691148d7c8dc416dc7
 
 payload:
   - "+.00cdn.com"
@@ -72,6 +72,7 @@ payload:
   - "+.360pay.cn"
   - "+.360qhcdn.com"
   - "+.360safe.com"
+  - "+.360scdn.com"
   - "+.360shouji.com"
   - "+.360sjyh.cn"
   - "+.360so.com"
@@ -1094,6 +1095,7 @@ payload:
   - "+.ddxq.mobi"
   - "+.dedao.cn"
   - "+.deepseek.com"
+  - "+.deepseeksvc.com"
   - "+.deppon.com"
   - "+.deppon.com.cn"
   - "+.designkit.cn"
@@ -2700,6 +2702,7 @@ payload:
   - "+.tcloudscdn.com"
   - "+.tcloudscdn.net"
   - "+.tcss.qq.com"
+  - "+.tctpwebankcdn.net"
   - "+.tcwqqdy.guru"
   - "+.tdnsdl1.cn"
   - "+.tdnsdl1.com.cn"
@@ -2768,7 +2771,9 @@ payload:
   - "+.tencentcdb.cn"
   - "+.tencentcdb.com"
   - "+.tencentcdb.com.cn"
+  - "+.tencentclb.cn"
   - "+.tencentclb.com"
+  - "+.tencentclb.com.cn"
   - "+.tencentcloud-aiot.com"
   - "+.tencentcloud.com"
   - "+.tencentcloudapi.com"
@@ -2792,6 +2797,7 @@ payload:
   - "+.tencentelasticsearch.com"
   - "+.tencentid.com"
   - "+.tencentidentity.com"
+  - "+.tencentmiying.com"
   - "+.tencentmusic.com"
   - "+.tencentproxy.com"
   - "+.tencentrio.com"
@@ -2802,6 +2808,7 @@ payload:
   - "+.tencentyun.com"
   - "+.tendbcluster.com"
   - "+.tendis.net"
+  - "+.tengmed.com"
   - "+.tenpay.com"
   - "+.test-cignacmb.com"
   - "+.testjrzk.net.cn"
@@ -2993,6 +3000,7 @@ payload:
   - "+.wbclick.mobile.sina.cn"
   - "+.wbimg.cn"
   - "+.wbimg.com"
+  - "+.wbweilicai.com"
   - "+.wcbygame.com"
   - "+.wcdn.cn"
   - "+.wdfok.com"
