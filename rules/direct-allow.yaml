@@ -1,5 +1,5 @@
 # Generated automatically by WEPC
-# MetaCubeX commit: a7d10203472fbc84f6a10906f53c9f39b7c951da
+# MetaCubeX commit: dff97e403383374dbfe39792d3dfdcf6717e385e
 
 payload:
   - "+.00cdn.com"
@@ -908,6 +908,7 @@ payload:
   - "+.cmread.com"
   - "+.cmvideo.cn"
   - "+.cnb.cool"
+  - "+.cnb.space"
   - "+.cncbinternational.com"
   - "+.cncqcloud.com"
   - "+.cnhbstock.com"
