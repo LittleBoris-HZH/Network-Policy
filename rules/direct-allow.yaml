@@ -1,5 +1,5 @@
 # Generated automatically by WEPC
-# MetaCubeX commit: 45a9c7f0489f8b1c7c3ae09192e2a6caa369a265
+# MetaCubeX commit: 2d368ff6025f49e068e848487bac54056e123a79
 
 payload:
   - "+.00cdn.com"
@@ -499,6 +499,7 @@ payload:
   - "+.bocaviation.com"
   - "+.boccfc.cc"
   - "+.boccfc.cn"
+  - "+.bocd.com.cn"
   - "+.bocfullertonbank.com"
   - "+.bocgi.com"
   - "+.bocgins.com"
@@ -709,6 +710,8 @@ payload:
   - "+.cdnv1.cn"
   - "+.cdnv2.cn"
   - "+.cdnv3.cn"
+  - "+.cdrcb.com"
+  - "+.cdrcbank.com"
   - "+.ceati.org.cn"
   - "+.cebbank.com"
   - "+.ceblease.com"
@@ -1700,6 +1703,7 @@ payload:
   - "+.iadmatapk.nosdn.127.net"
   - "+.iadmusicmat.music.126.net"
   - "+.iadmusicmatvideo.music.126.net"
+  - "+.ibangbank.com"
   - "+.icbc"
   - "+.icbc-at.com"
   - "+.icbc-cz.com"
